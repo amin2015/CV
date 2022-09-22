@@ -94,7 +94,7 @@ class ProfileController extends AbstractController
                 );
                 // Horizontal line
                 $section->addText('', [], ['borderBottomSize' => 3]);
-                \PhpOffice\PhpWord\Shared\Html::addHtml($section, preg_replace('/&amp;/', htmlspecialchars('&amp;'), $form['professionalExperience']->getData()), false, false);
+                \PhpOffice\PhpWord\Shared\Html::addHtml($section, $this->htmlProcessing(preg_replace('/&amp;/', htmlspecialchars('&amp;'), $form['professionalExperience']->getData())), false, false);
             }
             /** Footer */
             if ($form['footer']->getData()) {
@@ -214,9 +214,9 @@ class ProfileController extends AbstractController
             $table->addRow();
             for ($c = 0; $c <= 1; $c++) {
                 if ($i % 2)
-                    $table->addCell($name == 'technicalSkills' ? 60000 : 90000)->addText(html_entity_decode(strip_tags($arraySElements[$i++])), $tableContentStyle);
+                    $table->addCell($name == 'technicalSkills' ? 60000 : 80000)->addText(html_entity_decode(strip_tags($arraySElements[$i++])), $tableContentStyle);
                 else
-                    $table->addCell($name == 'technicalSkills' ? 40000 : 10000)->addText(html_entity_decode(strip_tags($arraySElements[$i++])), $tableContentStyle);
+                    $table->addCell($name == 'technicalSkills' ? 40000 : 20000)->addText(html_entity_decode(strip_tags($arraySElements[$i++])), $tableContentStyle);
             }
         }
     }
