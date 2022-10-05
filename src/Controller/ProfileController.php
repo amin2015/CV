@@ -92,6 +92,11 @@ class ProfileController extends AbstractController
                     'Expérience professionnelle',
                     $this->getTitleStyle($phpWord)
                 );
+                $tableContentStyle = 'Table content style';
+                $phpWord->addFontStyle(
+                    $tableContentStyle,
+                    array('name' => 'calibri light', 'size' => 12, 'color' => '212529')
+                );
                 // Horizontal line
                 $section->addText('', [], ['borderBottomSize' => 3]);
                 \PhpOffice\PhpWord\Shared\Html::addHtml($section, $this->htmlProcessing(preg_replace('/&amp;/', htmlspecialchars('&amp;'), $form['professionalExperience']->getData())), false, false);
